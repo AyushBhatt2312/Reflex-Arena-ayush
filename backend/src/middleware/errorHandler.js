@@ -10,11 +10,11 @@ export function notFound(req, res) {
 export function errorHandler(err, req, res, _next) {
   // Broken JSON in the request body
   if (err.type === 'entity.parse.failed') {
-    return res.status(400).json({ detail: 'Request body is not valid JSON' });
+    return res.status(400).json({ detail: 'Request body is not valid JSON !' });
   }
   // Two answers for the same round arrived at the same time
   if (err instanceof mongoose.Error.VersionError) {
-    return res.status(409).json({ detail: 'This round was already answered' });
+    return res.status(409).json({ detail: 'This round was already answered !' });
   }
   // Errors we threw on purpose (HttpError) have a status
   if (err.status && err.status < 500) {
